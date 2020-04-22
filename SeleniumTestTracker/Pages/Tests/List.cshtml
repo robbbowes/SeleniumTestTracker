@@ -1,0 +1,49 @@
+﻿@page
+@model SeleniumTestTracker.ListModel
+@{
+    ViewData["Title"] = "List";
+}
+
+<h2>List</h2>
+
+<h3>All tests</h3>
+<table class="table">
+    <thread>
+        <tr>
+            <th>Test</th>
+            <th>Status</th>
+            <th>Breakages</th>
+        </tr>
+    </thread>
+    <tbody>
+        @foreach (var test in Model.Tests)
+        {
+            <tr>
+                <td>@test.Name.</td>
+                <td>@(test.IsBroken ? "Failed" : "-")</td>
+                <td>@test.TimesBroken</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Failing tests</h3>
+<table class="table">
+    <thread>
+        <tr>
+            <th>Test</th>
+            <th>Status</th>
+            <th>Breakages</th>
+        </tr>
+    </thread>
+    <tbody>
+        @foreach (var test in Model.FailingTests)
+        {
+            <tr>
+                <td>@test.Name.</td>
+                <td>@(test.IsBroken ? "Failed" : "-")</td>
+                <td>@test.TimesBroken</td>
+            </tr>
+        }
+    </tbody>
+</table>
